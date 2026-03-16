@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Ina's Studios</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <style>
+        .page-header {
+            padding: 150px 0 80px;
+            background: linear-gradient(rgba(5, 5, 5, 0.9), rgba(5, 5, 5, 1)),
+                url('https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+            text-align: center;
+        }
+
+        /* Filter Controls */
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--accent-color);
+            color: var(--bg-primary);
+            border-color: var(--accent-color);
+        }
+
+        /* Masonry Grid (Approximation with CSS Columns for simplicity, or CSS Grid) */
+        /* For a true masonry look with vanilla HTML/CSS, columns are easiest, but Grid handles distinct item sizes better */
+        .portfolio-grid {
+            columns: 3 300px;
+            column-gap: 1.5rem;
+            padding-bottom: var(--space-xl);
+        }
+
+        .portfolio-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            cursor: pointer;
+            /* Default transform/opacity for filtering */
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+
+        /* Hide class for filtering */
+        .portfolio-item.hidden {
+            display: none;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform var(--transition-slow);
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem 1.5rem;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .portfolio-item:hover .item-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .item-category {
+            color: var(--accent-color);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.2rem;
+            display: block;
+        }
+
+        .item-title {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* Custom Lightbox Styles mapping from gallery.js */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90vh;
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+
+        .lightbox.active .lightbox-content {
+            transform: scale(1);
+        }
+
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-caption {
+            color: white;
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: color 0.2s;
+        }
+
+        .lightbox-close:hover {
+            color: var(--accent-color);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .lightbox-nav:hover {
+            background: var(--accent-color);
+            color: black;
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .lightbox-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .lightbox-prev {
+                left: 10px;
+            }
+
+            .lightbox-next {
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Component Placeholder: Navbar -->
+    <div id="header-placeholder"></div>
+
+    <header class="page-header">
+        <div class="container fade-up opacity-0">
+            <h1>Our <span class="text-accent">Work</span></h1>
+            <p style="margin: 0 auto;">A curated selection of our favorite visuals.</p>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+
+            <!-- Filters -->
+            <div class="portfolio-filters fade-up delay-100">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="photography">Photography</button>
+                <button class="filter-btn" data-filter="videography">Videography</button>
+                <button class="filter-btn" data-filter="graphics">Graphics</button>
+            </div>
+
+            <!-- Grid -->
+            <div class="portfolio-grid" id="portfolio-grid">
+
+                <!-- Item 1 (Photography) -->
+                <div class="portfolio-item fade-up delay-200" data-category="photography"
+                    data-src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop"
+                        alt="Wedding Couple">
+                    <div class="item-overlay">
+                        <span class="item-category">Photography</span>
+                        <span class="item-title">Sarah & John's Wedding</span>
+                    </div>
+                </div>
+
+                <!-- Item 2 (Videography) -->
+                <div class="portfolio-item fade-up delay-300" data-category="videography"
+                    data-src="https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=2000&auto=format&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=800&auto=format&fit=crop"
+                        alt="Music Video Production">
+                    <div class="item-overlay">
+                        <span class="item-category">Videography</span>
+                        <span class="item-title">Neon Nights Music Video</span>
+                    </div>
+                </div>
+
+                <!-- Item 3 (Graphics) -->
+                <div class="portfolio-item fade-up delay-400" data-category="graphics"
+                    data-src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=2071&auto=format&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=800&auto=format&fit=crop"
+                        alt="Brand Book">
+                    <div class="item-overlay">
+                        <span class="item-category">Graphics</span>
+                        <span class="item-title">Zenith Coffee Brand Guide</span>
+                    </div>
+                </div>
+
+                <!-- Item 4 (Photography) -->
+                <div class="portfolio-item fade-up delay-200" data-category="photography"
+                    data-src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=2000&auto=format&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop"
+                        alt="Camera Gear">
+                    <div class="item-overlay">
+                        <span class="item-category">Photography</span>
+                        <span class="item-title">Sony A7S III Review Shots</span>
+                    </div>
+                </div>
+
+                <!-- Item 5 (Videography) -->
+                <div class="portfolio-item fade-up delay-300" data-category="videography"
+                    data-src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=2071&auto=format&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=800&auto=format&fit=crop"
+                        alt="Concert Video">
+                    <div class="item-overlay">
+                        <span class="item-category">Videography</span>
+                        <span class="item-title">Echoes Festival Recap</span>
+                    </div>
+                </div>
+
+                <!-- Item 6 (Graphics) -->
+                <div class="portfolio-item fade-up delay-400" data-category="graphics"
+                    data-src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1974&auto=format&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=800&auto=format&fit=crop"
+                        alt="Social Media Setup">
+                    <div class="item-overlay">
+                        <span class="item-category">Graphics</span>
+                        <span class="item-title">Instagram Template Kit</span>
+                    </div>
+                </div>
+
+                <!-- Item 7 (Photography) -->
+                <div class="portfolio-item fade-up delay-200" data-category="photography"
+                    data-src="https://images.unsplash.com/photo-1554046920-90dcac824bd0?q=80&w=2000&auto=format&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1554046920-90dcac824bd0?q=80&w=800&auto=format&fit=crop"
+                        alt="Studio Setup">
+                    <div class="item-overlay">
+                        <span class="item-category">Photography</span>
+                        <span class="item-title">Studio Portraits Campaign</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Component Placeholder: Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Lightbox Structure -->
+    <div id="lightbox" class="lightbox">
+        <button class="lightbox-close" aria-label="Close Lightbox">&times;</button>
+        <button class="lightbox-nav lightbox-prev" aria-label="Previous Image">&#10094;</button>
+        <div class="lightbox-content">
+            <img id="lightbox-img" class="lightbox-img" src="" alt="Full size image">
+            <div id="lightbox-caption" class="lightbox-caption"></div>
+        </div>
+        <button class="lightbox-nav lightbox-next" aria-label="Next Image">&#10095;</button>
+    </div>
+
+    <!-- JS -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/gallery.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const headerContent = document.querySelector('.page-header .container');
+                if (headerContent) headerContent.classList.add('visible');
+            }, 100);
+        });
+    </script>
+</body>
+
+</html>

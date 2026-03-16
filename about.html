@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Ina's Studios</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <style>
+        .page-header {
+            padding: 150px 0 80px;
+            background: linear-gradient(rgba(5, 5, 5, 0.9), rgba(5, 5, 5, 1)),
+                url('https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+            text-align: center;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            align-items: center;
+        }
+
+        @media (max-width: 992px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: rgba(255, 215, 0, 0.1);
+            color: var(--accent-color);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            margin: 0.5rem 0.5rem 0 0;
+            font-size: 0.9rem;
+            transition: all var(--transition-fast);
+        }
+
+        .skill-tag:hover {
+            background: var(--accent-color);
+            color: var(--bg-primary);
+        }
+
+        .stats-container {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+        }
+
+        .stat-item h3 {
+            color: var(--accent-color);
+            font-size: 2.5rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .equipment-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .equipment-item {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .equipment-item h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .equipment-item p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Component Placeholder: Navbar -->
+    <div id="header-placeholder"></div>
+
+    <header class="page-header">
+        <div class="container fade-up opacity-0">
+            <h1>Our <span class="text-accent">Story</span></h1>
+            <p style="margin: 0 auto;">The visionaries behind the lens.</p>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="fade-up">
+                    <img src="https://images.unsplash.com/photo-1554046920-90dcac824bd0?q=80&w=800&auto=format&fit=crop"
+                        alt="Studio Setup"
+                        style="border-radius: var(--border-radius-lg); box-shadow: -15px 15px 0 var(--accent-color);">
+                </div>
+
+                <div class="fade-up delay-200">
+                    <h2>Passionate About <span class="text-accent">Visuals</span></h2>
+                    <p>Founded in 2018, Ina's Studios began as a small passion project and has since blossomed into a
+                        full-service multimedia agency. We believe that every brand, every couple, and every individual
+                        has a unique story that deserves to be told beautifully.</p>
+                    <p>Our approach is cinematic, our eye for detail is obsessive, and our dedication to our craft is
+                        unwavering. We blend modern aesthetics with timeless storytelling.</p>
+
+                    <h3 style="margin-top: 2rem; font-size: 1.2rem;">Our Expertise</h3>
+                    <div>
+                        <span class="skill-tag">Adobe Creative Suite</span>
+                        <span class="skill-tag">Color Grading</span>
+                        <span class="skill-tag">Portrait Lighting</span>
+                        <span class="skill-tag">Drone Cinematrography</span>
+                        <span class="skill-tag">Typography</span>
+                        <span class="skill-tag">Brand Strategy</span>
+                    </div>
+
+                    <div class="stats-container">
+                        <div class="stat-item">
+                            <h3>150+</h3>
+                            <p>Projects Completed</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>5</h3>
+                            <p>Awards Received</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>100%</h3>
+                            <p>Client Satisfaction</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipment Section -->
+    <section class="section" style="background-color: var(--bg-secondary);">
+        <div class="container">
+            <div class="text-center fade-up">
+                <h2>Our <span class="text-accent">Arsenal</span></h2>
+                <p>We use industry-standard gear to ensure the highest quality output.</p>
+            </div>
+
+            <ul class="equipment-list">
+                <li class="equipment-item fade-up delay-100">
+                    <h4>Cameras</h4>
+                    <p>Sony A7S III, RED Komodo, Canon R5</p>
+                </li>
+                <li class="equipment-item fade-up delay-200">
+                    <h4>Lenses</h4>
+                    <p>Sigma Art Primes, Sony G Master series</p>
+                </li>
+                <li class="equipment-item fade-up delay-300">
+                    <h4>Lighting</h4>
+                    <p>Aputure LS 600d, Godox Strobes</p>
+                </li>
+                <li class="equipment-item fade-up delay-400">
+                    <h4>Software</h4>
+                    <p>Premiere, DaVinci Resolve, Lightroom, Illustrator</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Component Placeholder: Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- JS -->
+    <script src="assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const headerContent = document.querySelector('.page-header .container');
+                if (headerContent) headerContent.classList.add('visible');
+            }, 100);
+        });
+    </script>
+</body>
+
+</html>

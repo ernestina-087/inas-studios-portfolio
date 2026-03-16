@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ina's Studios | Capturing Stories Through Lens & Design</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <style>
+        /* Homepage Specific Styles */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            text-align: center;
+            background: linear-gradient(rgba(5, 5, 5, 0.7), rgba(5, 5, 5, 0.9)),
+                url('https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+        }
+
+        .hero-content {
+            z-index: 2;
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            margin: 0 auto 2rem;
+            max-width: 600px;
+        }
+
+        .hero-scroll-btn {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-primary);
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0) translateX(-50%);
+            }
+
+            40% {
+                transform: translateY(-30px) translateX(-50%);
+            }
+
+            60% {
+                transform: translateY(-15px) translateX(-50%);
+            }
+        }
+
+        /* Featured Works Grid */
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .featured-item {
+            position: relative;
+            height: 350px;
+        }
+
+        /* Services Overview */
+        .services-overview {
+            background-color: var(--bg-secondary);
+        }
+
+        .service-card {
+            background-color: var(--bg-tertiary);
+            padding: 2.5rem;
+            border-radius: var(--border-radius-lg);
+            text-align: center;
+            transition: transform var(--transition-normal);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(rgba(255, 215, 0, 0.1), rgba(5, 5, 5, 1));
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Component Placeholder: Navbar -->
+    <div id="header-placeholder"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content fade-up opacity-0">
+            <h1>Ina's Studios</h1>
+            <p>Capturing Stories Through Lens & Design.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="#featured" class="btn btn-primary">View Work</a>
+                <a href="contact.html" class="btn btn-outline">Let's Talk</a>
+            </div>
+        </div>
+        <a href="#featured" class="hero-scroll-btn">↓</a>
+    </section>
+
+    <!-- Featured Work Section -->
+    <section id="featured" class="section">
+        <div class="container">
+            <h2 class="text-center fade-up">Featured <span class="text-accent">Work</span></h2>
+            <p class="text-center text-secondary fade-up delay-100" style="margin: 0 auto;">A glimpse into our visual
+                storytelling</p>
+
+            <div class="featured-grid">
+                <div class="featured-item img-hover-zoom fade-up delay-200">
+                    <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=800&auto=format&fit=crop"
+                        alt="Photography">
+                    <div class="portfolio-overlay">
+                        <h4>Wedding Photography</h4>
+                        <p>Los Angeles, CA</p>
+                    </div>
+                </div>
+                <div class="featured-item img-hover-zoom fade-up delay-300">
+                    <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=800&auto=format&fit=crop"
+                        alt="Videography">
+                    <div class="portfolio-overlay">
+                        <h4>Music Video Production</h4>
+                        <p>The Midnight Echoes</p>
+                    </div>
+                </div>
+                <div class="featured-item img-hover-zoom fade-up delay-400">
+                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=800&auto=format&fit=crop"
+                        alt="Graphic Design">
+                    <div class="portfolio-overlay">
+                        <h4>Brand Identity</h4>
+                        <p>Zenith Coffee Roasters</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center" style="margin-top: 3rem;">
+                <a href="portfolio.html" class="btn btn-outline fade-up delay-200">See Full Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="section services-overview">
+        <div class="container">
+            <h2 class="text-center fade-up"><span class="text-accent">Our</span> Expertise</h2>
+
+            <div class="featured-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                <div class="service-card fade-up delay-100">
+                    <span class="service-icon">📷</span>
+                    <h3>Photography</h3>
+                    <p>Capturing raw, authentic moments for events, portraits, and commercial brands.</p>
+                </div>
+                <div class="service-card fade-up delay-200">
+                    <span class="service-icon">🎥</span>
+                    <h3>Videography</h3>
+                    <p>Cinematic storytelling for music videos, corporate events, and documentary shorts.</p>
+                </div>
+                <div class="service-card fade-up delay-300">
+                    <span class="service-icon">✨</span>
+                    <h3>Graphic Design</h3>
+                    <p>Crafting impactful brand identities, social media assets, and marketing collateral.</p>
+                </div>
+            </div>
+
+            <div class="text-center" style="margin-top: 3rem;">
+                <a href="services.html" class="btn btn-outline fade-up delay-200">Explore Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Short About Section -->
+    <section class="section">
+        <div class="container" style="display: flex; align-items: center; gap: 4rem; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 300px;" class="fade-up">
+                <img src="https://images.unsplash.com/photo-1554046920-90dcac824bd0?q=80&w=800&auto=format&fit=crop"
+                    alt="Ina's Studios Workspace"
+                    style="border-radius: var(--border-radius-lg); box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+            </div>
+            <div style="flex: 1; min-width: 300px;" class="fade-up delay-200">
+                <h2>Behind the <span class="text-accent">Lens</span></h2>
+                <p>At Ina's Studios, we don't just take pictures or design graphics—we craft visual narratives that
+                    resonate. Based in Los Angeles, our multidisciplinary team brings over a decade of experience in
+                    visual arts.</p>
+                <p>Whether you're a couple looking to eternalize your wedding or a brand ready for a visual overhaul, we
+                    have the vision and the tools to bring your story to life.</p>
+                <a href="about.html" class="btn btn-primary" style="margin-top: 1rem;">More About Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section">
+        <div class="container fade-up">
+            <h2 style="font-size: clamp(2.5rem, 5vw, 4rem);">Ready to create <span class="text-accent">magic?</span>
+            </h2>
+            <p style="margin: 0 auto 2rem; font-size: 1.25rem;">Let's discuss your next project and turn your vision
+                into reality.</p>
+            <a href="contact.html" class="btn btn-primary">Start a Project</a>
+        </div>
+    </section>
+
+    <!-- Component Placeholder: Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- JS -->
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Trigger initial animation for Hero on DOMContentLoaded manually since intersection observer sometimes misses it before scrolling
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const heroContent = document.querySelector('.hero-content');
+                if (heroContent) heroContent.classList.add('visible');
+            }, 100);
+        });
+    </script>
+</body>
+
+</html>

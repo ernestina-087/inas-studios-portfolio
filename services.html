@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Ina's Studios</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <style>
+        .page-header {
+            padding: 150px 0 80px;
+            background: linear-gradient(rgba(5, 5, 5, 0.9), rgba(5, 5, 5, 1)),
+                url('https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+            text-align: center;
+        }
+
+        .service-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: var(--space-xl);
+            padding-bottom: var(--space-xl);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .service-row:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .service-row.reverse {
+            direction: rtl;
+        }
+
+        .service-row.reverse>* {
+            direction: ltr;
+            /* Reset text direction inside */
+        }
+
+        @media (max-width: 992px) {
+            .service-row {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .service-row.reverse {
+                direction: ltr;
+            }
+        }
+
+        .service-img {
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .service-content h2 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .service-features li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-primary);
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .pricing-hint {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Component Placeholder: Navbar -->
+    <div id="header-placeholder"></div>
+
+    <header class="page-header">
+        <div class="container fade-up opacity-0">
+            <h1>Our <span class="text-accent">Services</span></h1>
+            <p style="margin: 0 auto;">Comprehensive visual solutions tailored for you.</p>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+
+            <!-- Photography -->
+            <div class="service-row" id="photography">
+                <div class="service-img fade-up img-hover-zoom">
+                    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000&auto=format&fit=crop"
+                        alt="Photography Equipment">
+                </div>
+                <div class="service-content fade-up delay-200">
+                    <h2>Photography</h2>
+                    <div class="pricing-hint">Starting at $300</div>
+                    <p>From intimate portraits to massive corporate events, we capture high-resolution imagery that
+                        tells your story organically. We handle styling, lighting, and post-production retouching.</p>
+                    <ul class="service-features">
+                        <li>Event & Wedding Photography</li>
+                        <li>Professional Headshots & Portraits</li>
+                        <li>Commercial & Product Photography</li>
+                        <li>High-end Retouching included</li>
+                    </ul>
+                    <a href="contact.html?service=photography" class="btn btn-primary">Inquire Now</a>
+                </div>
+            </div>
+
+            <!-- Videography -->
+            <div class="service-row reverse" id="videography">
+                <div class="service-img fade-up img-hover-zoom">
+                    <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=1000&auto=format&fit=crop"
+                        alt="Videography Production">
+                </div>
+                <div class="service-content fade-up delay-200">
+                    <h2>Videography & Production</h2>
+                    <div class="pricing-hint">Custom Quoted</div>
+                    <p>We produce cinematic visuals that engage and captivate. Our team handles everything from
+                        pre-production storyboarding to the final edit, color grade, and sound design.</p>
+                    <ul class="service-features">
+                        <li>Music Videos & Short Films</li>
+                        <li>Corporate Promos & Documentaries</li>
+                        <li>Drone & Aerial Cinematography</li>
+                        <li>Full Post-Production (Editing, Color, Audio)</li>
+                    </ul>
+                    <a href="contact.html?service=videography" class="btn btn-outline">Let's Discuss</a>
+                </div>
+            </div>
+
+            <!-- Graphic Design -->
+            <div class="service-row" id="graphics">
+                <div class="service-img fade-up img-hover-zoom">
+                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=1000&auto=format&fit=crop"
+                        alt="Graphic Design Process">
+                </div>
+                <div class="service-content fade-up delay-200">
+                    <h2>Brand Graphic Design</h2>
+                    <div class="pricing-hint">Starting at $500</div>
+                    <p>Your visual identity is how the world perceives you. We design striking logos, typography arrays,
+                        color palettes, and marketing collateral that sets you apart from the crowd.</p>
+                    <ul class="service-features">
+                        <li>Logo & Brand Identity Design</li>
+                        <li>Social Media Assets & Templates</li>
+                        <li>Print Layouts (Flyers, Posters, Menus)</li>
+                        <li>Album & Cover Art</li>
+                    </ul>
+                    <a href="contact.html?service=design" class="btn btn-primary">Start Designing</a>
+                </div>
+            </div>
+
+            <!-- Social Media / Content -->
+            <div class="service-row reverse" id="social">
+                <div class="service-img fade-up img-hover-zoom">
+                    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop"
+                        alt="Social Media Content Creation">
+                </div>
+                <div class="service-content fade-up delay-200">
+                    <h2>Social Content Creation</h2>
+                    <div class="pricing-hint">Monthly Retainers Available</div>
+                    <p>In the digital age, volume and quality must go hand-in-hand. We create engaging short-form
+                        TikToks, Reels, and stylized feed posts designed to maximize engagement and growth.</p>
+                    <ul class="service-features">
+                        <li>Short-form Video Production (Reels, TikTok)</li>
+                        <li>Curated Feed Layouts</li>
+                        <li>Content Strategy & Planning</li>
+                        <li>On-site content capturing</li>
+                    </ul>
+                    <a href="contact.html?service=social" class="btn btn-outline">Explore Packages</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Component Placeholder: Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- JS -->
+    <script src="assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const headerContent = document.querySelector('.page-header .container');
+                if (headerContent) headerContent.classList.add('visible');
+            }, 100);
+        });
+    </script>
+</body>
+
+</html>

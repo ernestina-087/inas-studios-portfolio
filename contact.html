@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Ina's Studios</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <style>
+        .page-header {
+            padding: 150px 0 80px;
+            background: linear-gradient(rgba(5, 5, 5, 0.9), rgba(5, 5, 5, 1)),
+                url('https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+            text-align: center;
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+        }
+
+        @media (max-width: 992px) {
+            .contact-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .contact-info-card {
+            background: var(--bg-secondary);
+            padding: 3rem 2rem;
+            border-radius: var(--border-radius-lg);
+            border-top: 4px solid var(--accent-color);
+        }
+
+        .info-block {
+            margin-bottom: 2.5rem;
+        }
+
+        .info-block h3 {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .info-block p,
+        .info-block a {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+        }
+
+        /* Form Styles */
+        .contact-form {
+            background: var(--bg-secondary);
+            padding: 3rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 576px) {
+            .contact-form {
+                padding: 1.5rem;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background: var(--bg-tertiary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            color: white;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: all var(--transition-fast);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            background: rgba(255, 215, 0, 0.05);
+            box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        /* Validation States */
+        .form-control.error {
+            border-color: #ff4d4d;
+        }
+
+        .form-control.success {
+            border-color: #4BB543;
+        }
+
+        .error-message {
+            color: #ff4d4d;
+            font-size: 0.85rem;
+            margin-top: 0.4rem;
+            display: none;
+        }
+
+        /* Submission Feedback */
+        .form-message-container {
+            display: none;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-message-container.success {
+            display: block;
+            background: rgba(75, 181, 67, 0.1);
+            border: 1px solid #4BB543;
+            color: #4BB543;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Component Placeholder: Navbar -->
+    <div id="header-placeholder"></div>
+
+    <header class="page-header">
+        <div class="container fade-up opacity-0">
+            <h1>Let's <span class="text-accent">Connect</span></h1>
+            <p style="margin: 0 auto;">Ready to start your next creative project?</p>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <div class="contact-layout">
+
+                <!-- Contact Info -->
+                <div class="fade-up delay-100">
+                    <div class="contact-info-card">
+                        <div class="info-block">
+                            <h3>Email Us</h3>
+                            <a href="mailto:hello@inasstudios.com">hello@inasstudios.com</a>
+                        </div>
+
+                        <div class="info-block">
+                            <h3>Call / WhatsApp</h3>
+                            <a href="tel:+15551234567">+1 (555) 123-4567</a>
+                        </div>
+
+                        <div class="info-block">
+                            <h3>Studio Location</h3>
+                            <p>123 Creative Blvd<br>Los Angeles, CA 90028<br>By appointment only.</p>
+                        </div>
+
+                        <div class="info-block" style="margin-bottom: 0;">
+                            <h3>Follow Us</h3>
+                            <div class="social-links" style="margin-top: 1rem;">
+                                <a href="#" aria-label="Instagram">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                    </svg>
+                                </a>
+                                <a href="#" aria-label="YouTube">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path
+                                            d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z">
+                                        </path>
+                                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="fade-up delay-200">
+                    <form id="contactForm" class="contact-form" novalidate>
+                        <h2 style="margin-bottom: 2rem;">Send a Message</h2>
+
+                        <div id="formFeedback" class="form-message-container">
+                            <strong>Success!</strong> Your message has been sent. We'll be in touch soon.
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Full Name</label>
+                                <input type="text" id="name" name="name" class="form-control" placeholder="John Doe">
+                                <div class="error-message">Please enter your name</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" id="email" name="email" class="form-control"
+                                    placeholder="john@example.com">
+                                <div class="error-message">Please enter a valid email</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="service" class="form-label">Interested Service</label>
+                            <select id="service" name="service" class="form-control">
+                                <option value="">Select a service...</option>
+                                <option value="photography">Photography</option>
+                                <option value="videography">Videography</option>
+                                <option value="design">Graphic Design</option>
+                                <option value="social">Social Media Content</option>
+                                <option value="other">Other / General Inquiry</option>
+                            </select>
+                            <div class="error-message">Please select a service</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message" class="form-label">Project Details</label>
+                            <textarea id="message" name="message" class="form-control"
+                                placeholder="Tell us about your project, timeline, and budget..."></textarea>
+                            <div class="error-message">Please provide some project details</div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="submitBtn" style="width: 100%;">
+                            <span>Send Message</span>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Component Placeholder: Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- JS -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/contact.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const headerContent = document.querySelector('.page-header .container');
+                if (headerContent) headerContent.classList.add('visible');
+            }, 100);
+
+            // Check URL parameters to auto-select a service if redirected from Services page
+            const urlParams = new URLSearchParams(window.location.search);
+            const serviceParam = urlParams.get('service');
+            if (serviceParam) {
+                const serviceSelect = document.getElementById('service');
+                if (serviceSelect) {
+                    // Force the select if the value exists
+                    const option = serviceSelect.querySelector(`option[value="${serviceParam}"]`);
+                    if (option) option.selected = true;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
