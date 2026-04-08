@@ -1,0 +1,134 @@
+/* Fade In Animation (Used with Intersection Observer in JS) */
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity, transform;
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+}
+
+/* Staggered animation delays */
+.delay-100 {
+    transition-delay: 100ms;
+}
+
+.delay-200 {
+    transition-delay: 200ms;
+}
+
+.delay-300 {
+    transition-delay: 300ms;
+}
+
+.delay-400 {
+    transition-delay: 400ms;
+}
+
+/* Image Hover Zoom Effect */
+.img-hover-zoom {
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    position: relative;
+}
+
+.img-hover-zoom img {
+    transition: transform var(--transition-slow);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.img-hover-zoom:hover img {
+    transform: scale(1.05);
+}
+
+/* Hover overlay for portfolio items */
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 5, 5, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+    padding: 2rem;
+    text-align: center;
+}
+
+.img-hover-zoom:hover .portfolio-overlay {
+    opacity: 1;
+}
+
+.portfolio-overlay h4 {
+    transform: translateY(20px);
+    transition: transform var(--transition-normal);
+    color: var(--accent-color);
+    font-size: 1.5rem;
+}
+
+.portfolio-overlay p {
+    transform: translateY(20px);
+    transition: transform var(--transition-normal);
+    color: var(--text-primary);
+    margin-bottom: 0;
+}
+
+.img-hover-zoom:hover .portfolio-overlay h4,
+.img-hover-zoom:hover .portfolio-overlay p {
+    transform: translateY(0);
+}
+
+/* Custom loading spinner */
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 3px solid rgba(255, 215, 0, 0.3);
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+.loader::after {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 3px solid;
+    border-color: var(--accent-color) transparent;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
